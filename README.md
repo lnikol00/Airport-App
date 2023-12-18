@@ -1,2 +1,30 @@
 # Airport-App
-Typescript, Tailwind CSS, ASP.NET Web API
+
+Clone the repository into your projects directory:
+
+### `git clone git@github.com:lnikol00/Airport-App.git`
+
+# Project Description
+
+Simple web application made for educational purposes.  
+
+* Learning and understanding how Tailwind CSS works. <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
+
+# Backend - server
+
+
+# Frontend - client
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm install` or `npm i`
+
+The command npm install is used in Node.js and JavaScript development to install the dependencies listed in a project's package.json file.
