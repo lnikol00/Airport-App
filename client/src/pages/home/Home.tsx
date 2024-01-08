@@ -1,10 +1,23 @@
-import React from 'react'
-import { planes } from './Planes'
+import { useEffect, useState } from 'react'
+import { PlanesType } from '../../interfaces/types'
 
 function Home() {
+
+    const [planes, setPlanes] = useState<PlanesType>([])
+
+    useEffect(() => {
+        fetch("http://localhost:8000/planes/")
+            .then((response) => {
+                return response.json()
+            })
+            .then((json) => {
+                setPlanes(json)
+            })
+    }, [])
+
     return (
         <div className='bg-white w-[75%] flex justify-center items-center absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2 rounded-lg'>
-            <div className='flex justify-center items-center p-5 w-full h-full'>
+            <div className='flex justify-center items-center flex-col p-5 w-full h-full'>
                 <div className='grid grid-cols-4 gap-5'>
                     {planes.map((plane) => {
                         return (
@@ -20,6 +33,9 @@ function Home() {
                             </div>
                         )
                     })}
+                </div>
+                <div className='flex justify-center items-center'>
+                    a
                 </div>
             </div>
         </div>
