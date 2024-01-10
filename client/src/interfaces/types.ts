@@ -17,3 +17,10 @@ export type Crew = [
 ]
 
 export type PlanesType = Array<PlaneType>
+
+export type PaginationProps = {
+    totalPlanes: number
+    planesPerPage: number
+    setCurrentPage: Function
+    currentPage: number
+}
