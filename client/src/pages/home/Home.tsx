@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PlanesType } from '../../interfaces/types'
 import Pagination from './Pagination';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -29,15 +30,17 @@ function Home() {
             </p> */}
             {planes.slice(firstPlaneIndex, lastPlaneIndex).map((plane) => {
                 return (
-                    <div
-                        key={plane.id}
-                        className='flex flex-start justify-start flex-col bg-white py-[10px] px-[16px] md:my-[10px] my-[8px] border-[1px] border-black border-solid shadow-md'
-                    >
-                        <div>
-                            <h1>{plane.name}</h1>
-                            <span>Country of origin: {plane.country}</span>
+                    <Link to={`/planes/${plane.id}`}>
+                        <div
+                            key={plane.id}
+                            className='flex flex-start justify-start flex-col bg-white py-[10px] px-[16px] md:my-[10px] my-[8px] border-[1px] border-black border-solid shadow-md cursor-pointer'
+                        >
+                            <div>
+                                <h1>{plane.name}</h1>
+                                <span>Country of origin: {plane.country}</span>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 )
             })}
             <Pagination

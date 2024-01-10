@@ -15,7 +15,7 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path='create' element={<Create />} />
-            <Route path='plane/:id' element={<PlaneDetails />} />
+            <Route path='planes/:id' element={<PlaneDetails />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
