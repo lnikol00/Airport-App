@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Airport-App
 
 Clone the repository into your projects directory:
@@ -32,3 +33,7 @@ You will also see any lint errors in the console.
 ### `npm install` or `npm i`
 
 The command npm install is used in Node.js and JavaScript development to install the dependencies listed in a project's package.json file.
+=======
+# lnikol00-hw-03-frontend
+Airport Application Frontend (Typescript, Tailwind CSS)
+>>>>>>> 5b9cd3605916b5108104f4582918c57414c5004c
