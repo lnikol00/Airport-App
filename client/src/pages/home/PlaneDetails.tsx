@@ -1,24 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { PlaneType } from '../../interfaces/types';
 import testImage from "../../utils/images/test.jpg"
 
 function PlaneDetails() {
-
-    // const params = useParams();
-
-    // const [plane, setPlane] = useState<PlaneType>()
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/planes/${params.id}`)
-    //         .then((res) => {
-    //             return res.json()
-    //         })
-    //         .then((json) => {
-    //             setPlane(json)
-    //         })
-    // }, [params])
-
 
     return (
         <div className='flex md:flex-row flex-col justify-start items-center md:p-[5rem] p-[1.5rem] '>

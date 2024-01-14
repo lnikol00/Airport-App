@@ -1,22 +1,19 @@
-export type PlaneType = {
+export type Plane = {
     id: number
-    name: string
-    img: string | undefined
+    model: string
+    year: number
     country: string
     capacity: number
-    routes: Routes[]
-    crew: Crew[]
+    image: string | undefined
+    type: string
+    captain: string
 }
 
-export type Routes = [
-    string
-]
-
-export type Crew = [
-    string
-]
-
-export type PlanesType = Array<PlaneType>
+export type PlaneListState = {
+    planes: Plane[]
+    loading?: boolean
+    error?: string
+}
 
 export type PaginationProps = {
     totalPlanes: number

@@ -15,7 +15,7 @@ const Pagination = ({ totalPlanes, planesPerPage, setCurrentPage, currentPage }:
                 pages.map((page, index) => {
                     return (
                         <button
-                            className={page == currentPage ? 'bg-[#a6c1ee] m-2 w-[35px] h-[30px]' : 'bg-white m-2 w-[35px] h-[30px]'}
+                            className={page === currentPage ? 'bg-[#a6c1ee] m-2 w-[35px] h-[30px]' : 'bg-white m-2 w-[35px] h-[30px]'}
                             key={index}
                             onClick={() => setCurrentPage(page)}
                         >
