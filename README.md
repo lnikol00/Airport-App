@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Airport-App
 
 Clone the repository into your projects directory:
@@ -37,3 +38,7 @@ The command npm install is used in Node.js and JavaScript development to install
 # lnikol00-hw-03-frontend
 Airport Application Frontend (Typescript, Tailwind CSS)
 >>>>>>> 5b9cd3605916b5108104f4582918c57414c5004c
+=======
+# lnikol00-hw-03-frontend
+Airport 
+>>>>>>> b8766ed5d3b48aafbc3d9ebfe6b8a5c11bab392d
