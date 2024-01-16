@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IPlaneLogic, PlaneLogic>();
-builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQL>();
+builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQLite>();
 
 builder.Services.AddCors(p => p.AddPolicy("cors_policy_allow_all", builder =>
 {
