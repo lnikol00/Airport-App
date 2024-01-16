@@ -1,0 +1,2 @@
+DELETE FROM Planes 
+WHERE ID = 3;

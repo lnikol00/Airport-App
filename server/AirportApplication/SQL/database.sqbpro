@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Luka Nikolac/Documents/Faks/DS/lnikol00-hw-03/AirportApplication/AirportApplication/SQL/database.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="1534"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:mainPlanes"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Planes" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="52"/><column index="2" value="62"/><column index="3" value="52"/><column index="4" value="78"/><column index="5" value="83"/><column index="6" value="237"/><column index="7" value="246"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">INSERT INTO Planes (Model, Year, Country, Capacity, Routes, Crew)
+VALUES 
+(&quot;EagleExpress 3000&quot;, 2018, &quot;Candad&quot;, 150, &quot;Vancouver to Sydney&quot;, &quot;Captain Liam O'Connor, First Officer Mei Chen, Flight Attendant Alex Johnson&quot;),
+(&quot;AeroGlobe Voyager-500&quot;, 2019, &quot;France&quot;, 180, &quot;Paris to Tokyo&quot;, &quot;Captain Antoine Dubois, First Officer Yuki Tanaka, Flight Attendant Maria Silva&quot;)</sql><sql name="SQL 2">SELECT ID, Model, Year, Country, Capacity, Routes, Crew FROM Planes
+WHERE ID % 2 = 0;</sql><sql name="SQL 3">UPDATE Planes
+SET Capacity = 300
+WHERE ID = 3;
+</sql><sql name="SQL 4">DELETE FROM Planes 
+WHERE ID = 3;
+</sql><current_tab id="3"/></tab_sql></sqlb_project>
