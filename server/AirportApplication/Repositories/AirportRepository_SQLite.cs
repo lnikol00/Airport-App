@@ -6,11 +6,11 @@ using System.Data;
 
 namespace AirportApplication.Repositories
 {
-    public class AirportRepository_SQL : IAirportRepository
+    public class AirportRepository_SQLite : IAirportRepository
     {
         private readonly string _connectionDB;
 
-        public AirportRepository_SQL(IOptions<DBConfiguration> configuration)
+        public AirportRepository_SQLite(IOptions<DBConfiguration> configuration)
         {
             _connectionDB = configuration.Value.ConnectionDB;
         }
