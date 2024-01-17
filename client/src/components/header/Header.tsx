@@ -20,8 +20,8 @@ function Header() {
                 </div>
                 <div className={
                     open
-                        ? 'duration-500 md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 justify-center'
-                        : 'duration-500 md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-[9%] md:w-auto w-full flex items-center px-5 justify-center'
+                        ? 'duration-500 md:static absolute z-10 bg-white md:min-h-fit min-h-[30vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 justify-center'
+                        : 'duration-500 md:static absolute z-10 bg-white md:min-h-fit min-h-[30vh] left-0 top-[9%] md:w-auto w-full flex items-center px-5 justify-center'
                 }>
                     <ul className='flex md:flex-row flex-col md:items-center items-center md:gap-[2vw] gap-8'>
                         <li>
