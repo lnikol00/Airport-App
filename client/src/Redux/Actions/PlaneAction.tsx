@@ -1,25 +1,42 @@
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
+import axios from "../../components/api/axios";
+import { PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
 import { Dispatch } from "redux";
-import { addPlane } from "../store";
 
 // PRODUCT LIST
 export const getAllPlanes = () => async (dispatch: Dispatch) => {
     try {
-        dispatch(addPlane({ loading: true, planes: [] }))
+        dispatch({ type: PlanesList.PLANE_LIST_REQUEST })
 
-        const url = 'http://localhost:5079/api/Airport'
-        const { data } = await axios.get(url);
-
-        dispatch(addPlane({ loading: false, planes: data }))
+        const { data } = await axios.get("/api/Airport");
+        dispatch({ type: PlanesList.PLANE_LIST_SUCCESS, payload: data })
 
     } catch (error) {
-
         const err = error as AxiosError
+        const message =
+            err.response && err.response.data ? err.response.data : err.message;
 
-        dispatch(addPlane({
-            loading: false,
-            planes: [],
-            error: err.message
-        }))
+        dispatch({
+            type: PlanesList.PLANE_LIST_FAIL,
+            payload: message
+        });
+    }
+}
+
+export const getPlaneDetails = (id: number) => async (dispatch: Dispatch) => {
+    try {
+        dispatch({ type: PlaneDetails.PLANE_DETAILS_REQUEST })
+
+        const { data } = await axios.get(`/api/Airport/${id}`);
+        dispatch({ type: PlaneDetails.PLANE_DETAILS_SUCCESS, payload: data })
+    } catch (error) {
+        const err = error as AxiosError
+        const message =
+            err.response && err.response.data ? err.response.data : err.message;
+
+        dispatch({
+            type: PlaneDetails.PLANE_DETAILS_FAIL,
+            payload: message
+        });
     }
 }

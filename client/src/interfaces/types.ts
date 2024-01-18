@@ -1,7 +1,7 @@
+// GENERAL PLANE TYPES
 export type Plane = {
     id: number
     model: string
-    name: string
     year: number
     country: string
     capacity: number
@@ -12,6 +12,7 @@ export type Plane = {
 
 export type PlaneList = Array<Plane>
 
+// PAGINATION TYPES
 export type PaginationProps = {
     totalPlanes: number
     planesPerPage: number

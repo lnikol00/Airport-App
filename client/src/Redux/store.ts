@@ -1,30 +1,23 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PlaneListState } from "../interfaces/types";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { planeDetailsReducer, planeListReducer } from "./Reducers/PlaneReducers";
+import { thunk } from "redux-thunk";
 
-const initialState: PlaneListState = {
-    planes: []
-}
-
-export const planeSlice = createSlice({
-    name: "List Plane",
-    initialState,
-    reducers: {
-        addPlane: (state, action: PayloadAction<any>) => {
-            state.planes.push(action.payload)
-        }
-    }
+const reducers = combineReducers({
+    planeList: planeListReducer,
+    planeDetails: planeDetailsReducer
 })
 
-export const { addPlane } = planeSlice.actions;
-export const planeListReducer = planeSlice.reducer;
+const middleware = [thunk]
 
 export const store = configureStore({
-    reducer: {
-        planeList: planeListReducer
-    }
+    reducer: reducers,
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware().concat(middleware)
 })
 
+
+
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof reducers>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
