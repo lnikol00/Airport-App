@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 // GENERAL PLANE TYPES
 export type Plane = {
     id: number
@@ -18,4 +20,8 @@ export type PaginationProps = {
     planesPerPage: number
     setCurrentPage: Function
     currentPage: number
+}
+
+export type ErrorProps = {
+    children: ReactNode
 }

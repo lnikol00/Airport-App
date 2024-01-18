@@ -1,7 +1,7 @@
 import { AllPlanesAction, SinglePlaneAction } from "../../interfaces/action-types";
 import { PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
 
-export const planeListReducer = (state = { planes: [] }, action: AllPlanesAction) => {
+export const planeListReducer = (state = { planes: [], loading: false, error: undefined }, action: AllPlanesAction) => {
     switch (action.type) {
         case PlanesList.PLANE_LIST_REQUEST:
             return { loading: true, planes: [] };
