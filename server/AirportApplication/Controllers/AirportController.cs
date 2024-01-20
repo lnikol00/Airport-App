@@ -1,19 +1,4 @@
-﻿/*
-**********************************
-* Author: Luka Nikolac
-* Project Task: Airport - Phase 2
-**********************************
-* Description:
-* 
-*    CREATE - Add new plane
-*    READ - Get all planes
-*    READ - Get specific plane
-*    DELETE - Delete plane
-*
-**********************************
-*/
-
-using AirportApplication.Controllers.DTO;
+﻿using AirportApplication.Controllers.DTO;
 using AirportApplication.Models;
 using AirportApplication.Filters;
 using AirportApplication.Repositories;

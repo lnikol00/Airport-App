@@ -1,16 +1,4 @@
-﻿/*
-**********************************
-* Author: Luka Nikolac
-* Project Task: Airport - Phase 2
-**********************************
-* Description:
-*  
-*  Implement `IAirportRepository` interface
-*
-**********************************
-*/
-
-using AirportApplication.Models;
+﻿using AirportApplication.Models;
 
 namespace AirportApplication.Repositories
 {

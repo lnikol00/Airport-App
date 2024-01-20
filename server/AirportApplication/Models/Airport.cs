@@ -1,16 +1,4 @@
-﻿/*
-**********************************
-* Author: Luka Nikolac
-* Project Task: Airport - Phase 1
-**********************************
-* Description:
-*  
-*  Contains Model defining Airport class 
-*
-**********************************
-*/
-
-namespace AirportApplication.Models
+﻿namespace AirportApplication.Models
 {
     public class Airport
     {
