@@ -1,6 +1,6 @@
 // REDUX TYPES
 
-import { PlaneDetails, PlanesList } from "../Redux/Constants/PlaneConstants"
+import { PlaneCreate, PlaneDetails, PlanesList } from "../Redux/Constants/PlaneConstants"
 import { Plane, PlaneList } from "./types"
 
 // Plane List
@@ -24,7 +24,7 @@ export type AllPlanesAction = PLANE_LIST_FAIL | PLANE_LIST_REQUEST | PLANE_LIST_
 // Single Plane Type
 export type PLANE_DETAILS_REQUEST = {
     type: PlaneDetails.PLANE_DETAILS_REQUEST
-    payload: Plane
+    payload: {}
 }
 
 export type PLANE_DETAILS_SUCCESS = {
@@ -38,3 +38,12 @@ export type PLANE_DETAILS_FAIL = {
 }
 
 export type SinglePlaneAction = PLANE_DETAILS_FAIL | PLANE_DETAILS_REQUEST | PLANE_DETAILS_SUCCESS
+
+export type PLANE_CREATE_REQUEST = {
+    type: PlaneCreate.PLANE_CREATE_REQUEST
+}
+
+export type PLANE_CREATE_SUCCESS = {
+    type: PlaneCreate.PLANE_CREATE_SUCCESS
+    payload: Plane
+}

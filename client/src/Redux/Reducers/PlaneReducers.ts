@@ -14,7 +14,7 @@ export const planeListReducer = (state = { planes: [], loading: false, error: un
     }
 }
 
-export const planeDetailsReducer = (state = { plane: {} }, action: SinglePlaneAction) => {
+export const planeDetailsReducer = (state = { plane: {}, loading: false, error: undefined }, action: SinglePlaneAction) => {
     switch (action.type) {
         case PlaneDetails.PLANE_DETAILS_REQUEST:
             return { ...state, loading: true };
