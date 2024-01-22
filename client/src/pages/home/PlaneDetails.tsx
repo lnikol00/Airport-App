@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import * as AiIcons from "react-icons/ai"
 import * as FaIcons from "react-icons/fa"
-import testImage from "../../utils/images/test.jpg"
 import { useParams } from 'react-router-dom'
 import { getPlaneDetails } from '../../Redux/Actions/PlaneAction'
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
@@ -29,18 +28,18 @@ function PlaneDetails() {
                     <>
                         <div className='md:w-[50%] w-[100%]'>
                             <img
-                                src={testImage}
-                                alt='test'
+                                src={plane?.image}
+                                alt={plane?.image}
                                 className='w-[100%] md:h-[450px] h-[200px]'
                             />
                         </div>
                         <div className='flex justify-center items-center flex-col md:w-[50%] w-[100%] md:px-[2em] md:py-[0em] py-[0.75em] md:gap-5 gap-3'>
-                            {/* <span className='text-xl'><b>Model: </b>{plane?.model}</span> */}
-                            <span className='text-xl'><b>Year: </b>1999</span>
-                            <span className='text-xl'><b>Country: </b>Croatia</span>
-                            <span className='text-xl'><b>Capacity: </b>200</span>
-                            <span className='text-xl'><b>Routes: </b>200</span>
-                            <span className='text-xl'><b>Crew: </b>200</span>
+                            <span className='text-xl'><b>Model: </b>{plane?.model}</span>
+                            <span className='text-xl'><b>Year: </b>{plane?.year}</span>
+                            <span className='text-xl'><b>Country: </b>{plane?.country}</span>
+                            <span className='text-xl'><b>Capacity: </b>{plane?.capacity}</span>
+                            <span className='text-xl'><b>Type: </b>{plane?.type}</span>
+                            <span className='text-xl'><b>Captain: </b>{plane?.captain}</span>
                             <div className='flex justify-center items-center gap-10 text-xl'>
                                 <div
                                     // onClick={handleDelete}

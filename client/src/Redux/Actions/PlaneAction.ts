@@ -1,9 +1,9 @@
 import { AxiosError } from "axios";
 import axios from "../../components/api/axios";
-import { PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
+import { PlaneCreate, PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
 import { Dispatch } from "redux";
+import { Plane } from "../../interfaces/types";
 
-// PRODUCT LIST
 export const getAllPlanes = () => async (dispatch: Dispatch) => {
     try {
         dispatch({ type: PlanesList.PLANE_LIST_REQUEST })
@@ -40,3 +40,27 @@ export const getPlaneDetails = (id: number) => async (dispatch: Dispatch) => {
         });
     }
 }
+
+export const createNewPlane =
+    (model: string, image: string, year: number, country: string, captain: string, capacity: number, type: string) =>
+        async (dispatch: Dispatch) => {
+            try {
+                dispatch({ type: PlaneCreate.PLANE_CREATE_REQUEST })
+
+                const { data } = await axios.post(
+                    `/api/Airport`,
+                    { model, image, year, country, captain, type, capacity }
+                );
+                dispatch({ type: PlaneCreate.PLANE_CREATE_SUCCESS, payload: data })
+
+            } catch (error) {
+                const err = error as AxiosError
+                const message =
+                    err.response && err.response.data ? err.response.data : err.message;
+
+                dispatch({
+                    type: PlaneCreate.PLANE_CREATE_FAIL,
+                    payload: message
+                });
+            }
+        }

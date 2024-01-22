@@ -47,3 +47,14 @@ export type PLANE_CREATE_SUCCESS = {
     type: PlaneCreate.PLANE_CREATE_SUCCESS
     payload: Plane
 }
+
+export type PLANE_CREATE_FAIL = {
+    type: PlaneCreate.PLANE_CREATE_FAIL
+    payload: string
+}
+
+export type PLANE_CREATE_RESET = {
+    type: PlaneCreate.PLANE_CREATE_RESET
+}
+
+export type CreatePlaneAction = PLANE_CREATE_REQUEST | PLANE_CREATE_FAIL | PLANE_CREATE_SUCCESS | PLANE_CREATE_RESET

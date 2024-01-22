@@ -7,7 +7,7 @@ export type Plane = {
     year: number
     country: string
     capacity: number
-    image: string | undefined
+    image: string
     type: string
     captain: string
 }
