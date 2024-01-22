@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import * as AiIcons from "react-icons/ai"
 import * as FaIcons from "react-icons/fa"
-import { useParams } from 'react-router-dom'
-import { getPlaneDetails } from '../../Redux/Actions/PlaneAction'
+import { useNavigate, useParams } from 'react-router-dom'
+import { deletePlane, getPlaneDetails } from '../../Redux/Actions/PlaneAction'
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
 import Loading from '../../utils/messages/Loading'
 import Error from '../../utils/messages/Error'
@@ -17,9 +17,22 @@ function PlaneDetails() {
 
     const { loading, error, plane } = planeDetails;
 
+    const planeDelete = useAppSelector((state) => state.planeDelete)
+    const { error: errorDelete, success: successDelete } = planeDelete;
+
     useEffect(() => {
         dispatch(getPlaneDetails(planeId))
-    }, [dispatch, planeId])
+    }, [dispatch, planeId, successDelete])
+
+    const navigate = useNavigate();
+
+    const handleDelete = (id: number) => {
+        if (window.confirm("Are you sure you want to delete this product?")) {
+            dispatch(deletePlane(id))
+            navigate("/")
+            window.location.reload();
+        }
+    }
 
     return (
         <div className='flex md:flex-row flex-col justify-start items-center md:p-[5rem] p-[1.5rem] '>
@@ -42,7 +55,7 @@ function PlaneDetails() {
                             <span className='text-xl'><b>Captain: </b>{plane?.captain}</span>
                             <div className='flex justify-center items-center gap-10 text-xl'>
                                 <div
-                                    // onClick={handleDelete}
+                                    onClick={() => handleDelete(planeId)}
                                     className='flex justify-center items-center bg-[red] text-white w-10 h-8 rounded-lg p-1 cursor-pointer'>
                                     <AiIcons.AiOutlineDelete />
                                 </div>

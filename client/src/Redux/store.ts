@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { planeCreateReducer, planeDetailsReducer, planeListReducer } from "./Reducers/PlaneReducers";
+import { planeCreateReducer, planeDeleteReducer, planeDetailsReducer, planeListReducer } from "./Reducers/PlaneReducers";
 import { thunk } from "redux-thunk";
 
 const reducers = combineReducers({
     planeList: planeListReducer,
     planeDetails: planeDetailsReducer,
-    planeCreate: planeCreateReducer
+    planeCreate: planeCreateReducer,
+    planeDelete: planeDeleteReducer
 })
 
 const middleware = [thunk]

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
 import { toast } from 'react-toastify'
-import { PlaneCreate } from '../../Redux/Constants/PlaneConstants'
 import { createNewPlane } from '../../Redux/Actions/PlaneAction'
 import Toast from '../../utils/messages/Toast'
 import Loading from '../../utils/messages/Loading'
+import { PlaneCreate } from '../../Redux/Constants/PlaneConstants'
+import Error from '../../utils/messages/Error'
 
 function Create() {
 
@@ -18,22 +19,26 @@ function Create() {
 
     const dispatch = useAppDispatch();
 
-    const productCreate = useAppSelector((state) => (state.planeCreate));
-    const { error, loading, plane } = productCreate;
+    const planeCreate = useAppSelector((state) => (state.planeCreate));
+    const { error, loading, plane } = planeCreate;
 
-    useEffect(() => {
-        if (plane) {
-            toast.success("Product Added!")
-            dispatch({ type: PlaneCreate.PLANE_CREATE_RESET });
-        }
-        else if (error) {
-            toast.error(error);
-        }
-    }, [plane, dispatch])
+    // useEffect(() => {
+    //     if (plane !== null) {
+    //         toast.success("Product Added!")
+    //         dispatch({ type: PlaneCreate.PLANE_CREATE_RESET });
+    //         setModel("")
+    //         setImage("")
+    //         setYear(0)
+    //         setCapacity(0)
+    //         setCaptain("")
+    //         setType("")
+
+    //     }
+    // }, [plane, dispatch])
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(createNewPlane(model, image, year, country, type, capacity, captain));
+        dispatch(createNewPlane(model, image, year, country, capacity, type, captain));
     }
 
 
@@ -41,6 +46,7 @@ function Create() {
         <div className='flex flex-col justify-center items-center md:pt-5 pt-3'>
             <Toast />
             <h2 className='md:text-3xl text-xl md:pb-5 pb-2'>Add new plane</h2>
+            {error && <Error>{error}</Error>}
             {loading && <Loading />}
             <form
                 onSubmit={handleSubmit}

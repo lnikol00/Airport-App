@@ -1,9 +1,9 @@
 import { AxiosError } from "axios";
 import axios from "../../components/api/axios";
-import { PlaneCreate, PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
+import { PlaneCreate, PlaneDelete, PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
 import { Dispatch } from "redux";
-import { Plane } from "../../interfaces/types";
 
+// Plane List
 export const getAllPlanes = () => async (dispatch: Dispatch) => {
     try {
         dispatch({ type: PlanesList.PLANE_LIST_REQUEST })
@@ -23,6 +23,7 @@ export const getAllPlanes = () => async (dispatch: Dispatch) => {
     }
 }
 
+// Plane Details
 export const getPlaneDetails = (id: number) => async (dispatch: Dispatch) => {
     try {
         dispatch({ type: PlaneDetails.PLANE_DETAILS_REQUEST })
@@ -41,15 +42,16 @@ export const getPlaneDetails = (id: number) => async (dispatch: Dispatch) => {
     }
 }
 
+// Plane Create
 export const createNewPlane =
-    (model: string, image: string, year: number, country: string, captain: string, capacity: number, type: string) =>
+    (model: string, image: string, year: number, country: string, capacity: number, type: string, captain: string) =>
         async (dispatch: Dispatch) => {
             try {
                 dispatch({ type: PlaneCreate.PLANE_CREATE_REQUEST })
 
                 const { data } = await axios.post(
                     `/api/Airport`,
-                    { model, image, year, country, captain, type, capacity }
+                    { model, image, year, country, capacity, type, captain }
                 );
                 dispatch({ type: PlaneCreate.PLANE_CREATE_SUCCESS, payload: data })
 
@@ -64,3 +66,23 @@ export const createNewPlane =
                 });
             }
         }
+
+// Plane Delete
+export const deletePlane = (id: number) => async (dispatch: Dispatch) => {
+    try {
+        dispatch({ type: PlaneDelete.PLANE_DELETE_REQUEST })
+
+        await axios.delete(`/api/Airport/${id}`);
+        dispatch({ type: PlaneDelete.PLANE_DELETE_SUCCESS })
+
+    } catch (error) {
+        const err = error as AxiosError
+        const message =
+            err.response && err.response.data ? err.response.data : err.message;
+
+        dispatch({
+            type: PlaneDetails.PLANE_DETAILS_FAIL,
+            payload: message
+        });
+    }
+}
