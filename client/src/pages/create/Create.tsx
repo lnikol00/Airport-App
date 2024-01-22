@@ -5,7 +5,6 @@ import { createNewPlane } from '../../Redux/Actions/PlaneAction'
 import Toast from '../../utils/messages/Toast'
 import Loading from '../../utils/messages/Loading'
 import { PlaneCreate } from '../../Redux/Constants/PlaneConstants'
-import Error from '../../utils/messages/Error'
 
 function Create() {
 
@@ -21,6 +20,12 @@ function Create() {
 
     const planeCreate = useAppSelector((state) => (state.planeCreate));
     const { error, loading, plane } = planeCreate;
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error)
+        }
+    }, [error])
 
     // useEffect(() => {
     //     if (plane !== null) {
@@ -41,12 +46,10 @@ function Create() {
         dispatch(createNewPlane(model, image, year, country, capacity, type, captain));
     }
 
-
     return (
         <div className='flex flex-col justify-center items-center md:pt-5 pt-3'>
             <Toast />
             <h2 className='md:text-3xl text-xl md:pb-5 pb-2'>Add new plane</h2>
-            {error && <Error>{error}</Error>}
             {loading && <Loading />}
             <form
                 onSubmit={handleSubmit}

@@ -6,6 +6,8 @@ import { deletePlane, getPlaneDetails } from '../../Redux/Actions/PlaneAction'
 import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
 import Loading from '../../utils/messages/Loading'
 import Error from '../../utils/messages/Error'
+import Toast from '../../utils/messages/Toast'
+import { toast } from 'react-toastify'
 
 function PlaneDetails() {
 
@@ -27,15 +29,23 @@ function PlaneDetails() {
     const navigate = useNavigate();
 
     const handleDelete = (id: number) => {
-        if (window.confirm("Are you sure you want to delete this product?")) {
+        if (window.confirm("Are you sure you want to delete this plane?")) {
             dispatch(deletePlane(id))
             navigate("/")
             window.location.reload();
         }
     }
 
+    useEffect(() => {
+        if (error) {
+            toast.error(errorDelete)
+        }
+
+    }, [errorDelete])
+
     return (
         <div className='flex md:flex-row flex-col justify-start items-center md:p-[5rem] p-[1.5rem] '>
+            <Toast />
             {loading ? (<Loading />) : error ? <Error>Something went wrong!</Error> :
                 (
                     <>
