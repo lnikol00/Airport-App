@@ -6,7 +6,7 @@ Clone the repository into your projects directory:
 
 # Project Description
 
-Simple web application made for educational purposes.  
+## Simple web application made for educational purposes.  
 
 * Learning and understanding how Tailwind CSS works. <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/>
 
