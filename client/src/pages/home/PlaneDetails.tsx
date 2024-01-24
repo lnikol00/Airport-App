@@ -41,7 +41,11 @@ function PlaneDetails() {
             toast.error(errorDelete)
         }
 
-    }, [errorDelete])
+    }, [error, errorDelete])
+
+    const handleUpdate = () => {
+        navigate(`/update/${params.id}`)
+    }
 
     return (
         <div className='flex md:flex-row flex-col justify-start items-center md:p-[5rem] p-[1.5rem] '>
@@ -70,7 +74,7 @@ function PlaneDetails() {
                                     <AiIcons.AiOutlineDelete />
                                 </div>
                                 <div
-                                    // onClick={handleUpdate}
+                                    onClick={handleUpdate}
                                     className='text-[green] cursor-pointer'>
                                     <FaIcons.FaPen />
                                 </div>

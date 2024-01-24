@@ -5,6 +5,7 @@ import Home from './pages/home/Home';
 import Create from './pages/create/Create';
 import PlaneDetails from './pages/home/PlaneDetails';
 import NotFound from './pages/not-found/NotFound';
+import Update from './pages/create/Update';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path='create' element={<Create />} />
             <Route path='planes/:id' element={<PlaneDetails />} />
+            <Route path='update/:id' element={<Update />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>

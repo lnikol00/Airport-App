@@ -1,5 +1,5 @@
-import { AllPlanesAction, CreatePlaneAction, DeletePlaneAction, SinglePlaneAction } from "../../interfaces/action-types";
-import { PlaneCreate, PlaneDelete, PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
+import { AllPlanesAction, CreatePlaneAction, DeletePlaneAction, SinglePlaneAction, UpdatePlaneAction } from "../../interfaces/action-types";
+import { PlaneCreate, PlaneDelete, PlaneDetails, PlaneUpdate, PlanesList } from "../Constants/PlaneConstants";
 
 // Plane List  
 export const planeListReducer = (state = { planes: [], loading: false, error: undefined }, action: AllPlanesAction) => {
@@ -58,6 +58,25 @@ export const planeDeleteReducer = (state = { loading: false, success: false, err
         case PlaneDelete.PLANE_DELETE_SUCCESS:
             return { loading: false, success: true };
         case PlaneDelete.PLANE_DELETE_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+}
+
+// Plane Update
+export const planeUpdateReducer = (state = {
+    plane: {
+        id: null,
+        model: null, year: null, country: null, capacity: null, type: null, captain: null, image: "emptyImage"
+    }, loading: false, success: false, error: null
+}, action: UpdatePlaneAction) => {
+    switch (action.type) {
+        case PlaneUpdate.PLANE_UPDATE_REQUEST:
+            return { loading: true };
+        case PlaneUpdate.PLANE_UPDATE_SUCCESS:
+            return { loading: false, success: true, plane: action.payload };
+        case PlaneUpdate.PLANE_UPDATE_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;

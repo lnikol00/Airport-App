@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import axios from "../../components/api/axios";
-import { PlaneCreate, PlaneDelete, PlaneDetails, PlanesList } from "../Constants/PlaneConstants";
+import { PlaneCreate, PlaneDelete, PlaneDetails, PlaneUpdate, PlanesList } from "../Constants/PlaneConstants";
 import { Dispatch } from "redux";
 
 // Plane List
@@ -82,6 +82,25 @@ export const deletePlane = (id: number) => async (dispatch: Dispatch) => {
 
         dispatch({
             type: PlaneDetails.PLANE_DETAILS_FAIL,
+            payload: message
+        });
+    }
+}
+
+// Plane Update
+export const updateProduct = (id: number) => async (dispatch: Dispatch) => {
+    try {
+        dispatch({ type: PlaneUpdate.PLANE_UPDATE_REQUEST })
+        const { data } = await axios.get(`/api/Airport/${id}`);
+        dispatch({ type: PlaneUpdate.PLANE_UPDATE_SUCCESS, payload: data })
+    } catch (error) {
+        const err = error as AxiosError
+        const message =
+            err.response && err.response.data ? err.response.data : err.message;
+
+
+        dispatch({
+            type: PlaneUpdate.PLANE_UPDATE_FAIL,
             payload: message
         });
     }

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
-import { toast } from 'react-toastify'
-import { createNewPlane } from '../../Redux/Actions/PlaneAction'
 import Toast from '../../utils/messages/Toast'
-import Loading from '../../utils/messages/Loading'
-import { PlaneCreate } from '../../Redux/Constants/PlaneConstants'
+import { toast } from "react-toastify"
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../Redux/hooks'
+import { updateProduct } from '../../Redux/Actions/PlaneAction'
 
-function Create() {
+function Update() {
 
     const [model, setModel] = useState<string>("")
     const [year, setYear] = useState<number>(0)
@@ -16,10 +15,14 @@ function Create() {
     const [capacity, setCapacity] = useState<number>(0)
     const [captain, setCaptain] = useState<string>("")
 
+    const navigate = useNavigate()
+    const params = useParams()
+    const planeId = Number(params.id);
+
     const dispatch = useAppDispatch();
 
-    const planeCreate = useAppSelector((state) => (state.planeCreate));
-    const { error, loading, plane } = planeCreate;
+    const planeUpdate = useAppSelector((state) => (state.planeUpdate));
+    const { error, loading, plane } = planeUpdate;
 
     useEffect(() => {
         if (error) {
@@ -28,31 +31,28 @@ function Create() {
     }, [error])
 
     useEffect(() => {
-        if (plane) {
-            toast.success("Plane Added!")
-            setModel("");
-            setImage("");
-            setCountry("");
-            setYear(0);
-            setCapacity(0);
-            setType("");
-            setCaptain("");
+        if (plane !== null && (plane?.id !== planeId)) {
+            dispatch(updateProduct(planeId))
         }
-    }, [plane])
+        else {
+            setModel(`${plane?.model}`);
+            setImage(`${plane?.image}`);
+            setYear(Number(plane?.year));
+            setCountry(`${plane?.country}`);
+            setType(`${plane?.type}`)
+            setCapacity(Number(plane?.capacity));
+            setCaptain(`${plane?.captain}`)
+        }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        dispatch(createNewPlane(model, image, year, country, capacity, type, captain));
-    }
+    }, [plane, dispatch, planeId])
 
     return (
         <div className='flex flex-col justify-center items-center md:pt-5 pt-3'>
             <Toast />
-            <h2 className='md:text-3xl text-xl md:pb-5 pb-2'>Add new plane</h2>
-            {loading && <Loading />}
+            <h2 className='md:text-3xl text-xl md:pb-5 pb-2'>Update plane</h2>
             <form
-                onSubmit={handleSubmit}
-                className='flex flex-col justify-center items-center md:gap-[20px] gap-[15px]'>
+                className='flex flex-col justify-center items-center md:gap-[20px] gap-[15px]'
+            >
                 <label className='relative' id='model'>
                     <input
                         type='text'
@@ -110,7 +110,6 @@ function Create() {
                         onChange={(e) => setType(e.target.value)}
                         className='h-[45px] md:w-[450px] w-80 px-4 text-md bg-inherit border-2 border-opacity-50 border-black rounded-lg outline-none transition duration-200'
                     >
-                        <option></option>
                         <option value="Cargo">Cargo</option>
                         <option value="Passenger">Passenger</option>
                         <option value="Private">Private</option>
@@ -127,11 +126,10 @@ function Create() {
                     />
                     <span className='text-md text-black absolute left-0 top-[10px] mx-6 px-2 transition duration-200 input-text'>Captain</span>
                 </label>
-
-                <button className='bg-white w-[150px] h-[45px] uppercase rounded-lg outline-none'>Add</button>
+                <button className='bg-white w-[150px] h-[45px] uppercase rounded-lg outline-none'>Update</button>
             </form>
         </div>
     )
 }
 
-export default Create
+export default Update
