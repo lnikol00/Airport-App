@@ -36,6 +36,17 @@ To run the server type:
 dotnet run
 ```
 
+## Database option (SQLite or MSSQL)
+
+Depending which database you want to use, you will adjust your Program.cs
+
+SQLite:
+
+```
+// If you want to use SQLite databse
+builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQLite>();
+```
+
 This command will start server on localhost
 
 # Frontend - client
