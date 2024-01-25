@@ -2,7 +2,7 @@
 
 Clone the repository into your projects directory:
 
-```
+```js
 git clone git@github.com:lnikol00/Airport-App.git
 ```
 
