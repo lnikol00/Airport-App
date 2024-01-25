@@ -52,7 +52,7 @@ builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQLite>();
 MSSQL:
 ```js
 // If you want to use MSSQL database
-builder.Services.AddSingleton<IAirportRepository,AirportRepositoryMSSQL>();
+builder.Services.AddSingleton<IAirportRepository, AirportRepository_MSSQL>();
 ```
 # Frontend - client
 
