@@ -12,7 +12,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IPlaneLogic, PlaneLogic>();
-builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQLite>();
+// If you want to use SQLite databse
+/* builder.Services.AddSingleton<IAirportRepository, AirportRepository_SQLite>(); */
+// If you want to use MSSQL database
+ builder.Services.AddSingleton<IAirportRepository,AirportRepository_MSSQL>(); 
 
 builder.Services.AddCors(p => p.AddPolicy("cors_policy_allow_all", builder =>
 {
