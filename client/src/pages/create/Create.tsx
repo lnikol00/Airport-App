@@ -28,8 +28,9 @@ function Create() {
     }, [error])
 
     useEffect(() => {
-        if (plane) {
+        if (!plane) {
             toast.success("Plane Added!")
+            dispatch({ type: PlaneCreate.PLANE_CREATE_RESET })
             setModel("");
             setImage("");
             setCountry("");
@@ -38,7 +39,7 @@ function Create() {
             setType("");
             setCaptain("");
         }
-    }, [plane])
+    }, [plane, dispatch])
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
